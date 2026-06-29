@@ -5,157 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NZTA Email Generator</title>
   <style>
-    :root {
-      --bg: #f3f6fb;
-      --panel: #ffffff;
-      --text: #18212f;
-      --muted: #667085;
-      --border: #d8e0ea;
-      --primary: #2563eb;
-      --primary-2: #1d4ed8;
-      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
+    :root{
+      --bg:#f3f6fb; --panel:#fff; --text:#18212f; --muted:#667085;
+      --border:#d8e0ea; --primary:#2563eb; --shadow:0 12px 32px rgba(15,23,42,.08);
+      --radius:18px;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
-      color: var(--text);
-    }
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px 16px 36px;
-    }
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 30px;
-      letter-spacing: -0.03em;
-    }
-    .sub {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .pill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #dbeafe;
-      color: #1d4ed8;
-      font-weight: 700;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 18px;
-    }
-    .card {
-      background: var(--panel);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .card-hd {
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--border);
-      background: #fbfdff;
-    }
-    .card-hd h2 {
-      margin: 0;
-      font-size: 18px;
-    }
-    .card-bd { padding: 18px; }
-    .form {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .field.full { grid-column: 1 / -1; }
-    label {
-      display: block;
-      margin-bottom: 7px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #344054;
-    }
-    input, textarea {
-      width: 100%;
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
-      padding: 12px 13px;
-      font-size: 14px;
-      outline: none;
-      background: #fff;
-      color: var(--text);
-    }
-    input:focus, textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-    }
-    textarea {
-      min-height: 84px;
-      resize: vertical;
-    }
-    .buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-    button, a.btn {
-      border: 0;
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .primary { background: var(--primary); color: #fff; }
-    .secondary { background: #e2e8f0; color: #0f172a; }
-    .good { background: #0f766e; color: #fff; }
-    .note {
-      margin-top: 14px;
-      padding: 12px 14px;
-      border: 1px dashed #cbd5e1;
-      border-radius: 12px;
-      background: #f8fafc;
-      color: #475569;
-      font-size: 13px;
-      line-height: 1.55;
-      white-space: pre-wrap;
-    }
-    .email {
-      border: 1px solid #dbe2ea;
-      border-radius: 16px;
-      padding: 18px;
-      background: #fff;
-      font-size: 14px;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    .red { color: #ef4444; font-weight: 700; }
-    .small { margin-top: 10px; font-size: 12px; color: var(--muted); }
-    @media (max-width: 960px) {
-      .grid { grid-template-columns: 1fr; }
-    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#f8fbff 0%,var(--bg) 100%);color:var(--text)}
+    .wrap{max-width:1200px;margin:0 auto;padding:24px 16px 36px}
+    .top{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+    h1{margin:0;font-size:30px;letter-spacing:-.03em}
+    .sub{margin-top:6px;color:var(--muted);font-size:14px}
+    .pill{padding:8px 12px;border-radius:999px;background:#dbeafe;color:#1d4ed8;font-weight:700;font-size:13px;white-space:nowrap}
+    .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:18px}
+    .card{background:var(--panel);border:1px solid rgba(148,163,184,.25);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .card-hd{padding:16px 18px;border-bottom:1px solid var(--border);background:#fbfdff}
+    .card-hd h2{margin:0;font-size:18px}
+    .card-bd{padding:18px}
+    .form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .field.full{grid-column:1/-1}
+    label{display:block;margin-bottom:7px;font-size:13px;font-weight:700;color:#344054}
+    input,textarea{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:12px 13px;font-size:14px;outline:none;background:#fff;color:var(--text)}
+    input:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+    textarea{min-height:84px;resize:vertical}
+    .buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    button,a.btn{border:0;border-radius:12px;padding:12px 16px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+    .primary{background:var(--primary);color:#fff}
+    .secondary{background:#e2e8f0;color:#0f172a}
+    .good{background:#0f766e;color:#fff}
+    .note{margin-top:14px;padding:12px 14px;border:1px dashed #cbd5e1;border-radius:12px;background:#f8fafc;color:#475569;font-size:13px;line-height:1.55;white-space:pre-wrap}
+    .email{border:1px solid #dbe2ea;border-radius:16px;padding:18px;background:#fff;font-size:14px;line-height:1.6;white-space:pre-wrap;font-family:Arial,Helvetica,sans-serif}
+    .red{color:#ef4444;font-weight:700}
+    .small{margin-top:10px;font-size:12px;color:var(--muted)}
+    @media (max-width:960px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -210,7 +92,7 @@
           </div>
 
           <div class="note" id="meta"></div>
-          <div class="small">Paste this file into <code>index.html</code>, commit it, then GitHub Pages will update the same URL.</div>
+          <div class="small">Paste this into <code>index.html</code>, commit it, and refresh the GitHub Pages link.</div>
         </div>
       </section>
 
@@ -249,23 +131,30 @@
       resetBtn: document.getElementById('resetBtn')
     };
 
-    function val(key) {
-      return els[key].value.trim();
-    }
+    function val(key){ return els[key].value.trim(); }
 
     function buildBody() {
-      const siteName = val('siteName');
-      const deviceName = val('deviceName');
-      const errorCode = val('errorCode');
-      const vendorName = val('vendorName');
-      const locationCode = val('locationCode');
       const ticketRef = val('ticketRef');
       const extra = val('extra');
+      return `Kia Ora Team,
 
-      const extraLine = extra ? `\n${extra}` : '';
-      const ticketLine = ticketRef ? `\n\nTicket reference: ${ticketRef}` : '';
+One NZ has received an event ticket indicating an outage at site ${val('siteName')}, Device name:${val('deviceName')}, with the error code ${val('errorCode')}.
 
-      return `Kia Ora Team,\n\nOne NZ has received an event ticket indicating an outage at site ${siteName}, Device name:${deviceName}, with the error code ${errorCode}.\n\nLocation Code: ${locationCode}\n\nOur internal health checks confirm that the device is not affected by any known power or network issues, nor is it impacted by any approved changes currently in progress.\n\nTo proceed with remediation, an onsite investigation is required. Could you please raise a ticket with the roadside vendor ${vendorName} to check for any power or maintenance issues that may be contributing to the outage?\n\nIf possible, please also confirm whether any recent site works or environmental factors (e.g., weather-related disruptions or scheduled maintenance) might be relevant to this incident.\n\nWe’d appreciate it if you could share the ticket reference once it’s been created, so we can track progress and coordinate any follow-up actions as needed.${ticketLine}${extraLine}\n\nRegards`;
+Location Code: ${val('locationCode')}
+
+Our internal health checks confirm that the device is not affected by any known power or network issues, nor is it impacted by any approved changes currently in progress.
+
+To proceed with remediation, an onsite investigation is required. Could you please raise a ticket with the roadside vendor ${val('vendorName')} to check for any power or maintenance issues that may be contributing to the outage?
+
+If possible, please also confirm whether any recent site works or environmental factors (e.g., weather-related disruptions or scheduled maintenance) might be relevant to this incident.
+
+We’d appreciate it if you could share the ticket reference once it’s been created, so we can track progress and coordinate any follow-up actions as needed.${ticketRef ? `
+
+Ticket reference: ${ticketRef}` : ''}${extra ? `
+
+${extra}` : ''}
+
+Regards`;
     }
 
     function buildSubject() {
@@ -273,36 +162,27 @@
     }
 
     function escapeHtml(s) {
-      return s
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#39;');
+      return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
     }
 
     function render() {
-      const siteName = escapeHtml(val('siteName'));
-      const deviceName = escapeHtml(val('deviceName'));
-      const errorCode = escapeHtml(val('errorCode'));
-      const vendorName = escapeHtml(val('vendorName'));
-      const locationCode = escapeHtml(val('locationCode'));
-      const ticketRef = escapeHtml(val('ticketRef'));
-      const extra = escapeHtml(val('extra'));
-
       const preview = `Kia Ora Team,
 
-One NZ has received an event ticket indicating an outage at site <span class="red">${siteName}</span>, Device name:<span class="red">${deviceName}</span>, with the error code <span class="red">${errorCode}</span>.
+One NZ has received an event ticket indicating an outage at site <span class="red">${escapeHtml(val('siteName'))}</span>, Device name:<span class="red">${escapeHtml(val('deviceName'))}</span>, with the error code <span class="red">${escapeHtml(val('errorCode'))}</span>.
 
-Location Code: ${locationCode}
+Location Code: ${escapeHtml(val('locationCode'))}
 
 Our internal health checks confirm that the device is not affected by any known power or network issues, nor is it impacted by any approved changes currently in progress.
 
-To proceed with remediation, an onsite investigation is required. Could you please raise a ticket with the roadside vendor <span class="red">${vendorName}</span> to check for any power or maintenance issues that may be contributing to the outage?
+To proceed with remediation, an onsite investigation is required. Could you please raise a ticket with the roadside vendor <span class="red">${escapeHtml(val('vendorName'))}</span> to check for any power or maintenance issues that may be contributing to the outage?
 
 If possible, please also confirm whether any recent site works or environmental factors (e.g., weather-related disruptions or scheduled maintenance) might be relevant to this incident.
 
-We’d appreciate it if you could share the ticket reference once it’s been created, so we can track progress and coordinate any follow-up actions as needed.${ticketRef ? `\n\nTicket reference: <span class="red">${ticketRef}</span>` : ''}${extra ? `\n\n${extra}` : ''}
+We’d appreciate it if you could share the ticket reference once it’s been created, so we can track progress and coordinate any follow-up actions as needed.${val('ticketRef') ? `
+
+Ticket reference: <span class="red">${escapeHtml(val('ticketRef'))}</span>` : ''}${val('extra') ? `
+
+${escapeHtml(val('extra'))}` : ''}
 
 Regards`;
 
@@ -318,24 +198,21 @@ Regards`;
         els.copyBtn.textContent = 'Copied!';
         setTimeout(() => (els.copyBtn.textContent = 'Copy email'), 1200);
       } catch {
-        alert('Copy failed. You can select the preview text manually.');
+        alert('Copy failed. Try selecting the email text manually.');
       }
     }
 
     function resetForm() {
-      Object.keys(defaults).forEach((key) => {
-        els[key].value = defaults[key];
-      });
+      Object.keys(defaults).forEach((key) => { els[key].value = defaults[key]; });
       render();
     }
 
-    ['input', 'change'].forEach((evt) => {
-      Object.keys(defaults).forEach((key) => els[key].addEventListener(evt, render));
+    ['input','change'].forEach(evt => {
+      Object.keys(defaults).forEach(key => els[key].addEventListener(evt, render));
     });
 
     els.copyBtn.addEventListener('click', copyEmail);
     els.resetBtn.addEventListener('click', resetForm);
-
     render();
   </script>
 </body>
