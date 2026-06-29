@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NZTA Email Generator</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #dbe2ea;
+      --accent: #2563eb;
+      --accent-2: #0f172a;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+    .topbar {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -0.03em;
+    }
+    .sub {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-hd {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfdff;
+    }
+    .card-hd h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .card-bd { padding: 18px; }
+    .form-g
