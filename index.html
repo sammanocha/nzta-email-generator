@@ -6,35 +6,35 @@
   <title>NZTA Email Generator</title>
   <style>
     :root {
-      --bg: #f6f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --line: #dbe2ea;
-      --accent: #2563eb;
-      --accent-2: #0f172a;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --radius: 20px;
+      --bg: #f3f6fb;
+      --panel: #ffffff;
+      --text: #18212f;
+      --muted: #667085;
+      --border: #d8e0ea;
+      --primary: #2563eb;
+      --primary-2: #1d4ed8;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Inter, Segoe UI, Arial, sans-serif;
-      background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
       color: var(--text);
     }
     .wrap {
-      max-width: 1220px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 28px 18px 40px;
+      padding: 24px 16px 36px;
     }
-    .topbar {
+    .top {
       display: flex;
-      align-items: end;
       justify-content: space-between;
+      align-items: end;
       gap: 16px;
-      margin-bottom: 18px;
       flex-wrap: wrap;
+      margin-bottom: 18px;
     }
     h1 {
       margin: 0;
@@ -42,17 +42,26 @@
       letter-spacing: -0.03em;
     }
     .sub {
-      margin-top: 8px;
+      margin-top: 6px;
       color: var(--muted);
       font-size: 14px;
     }
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+    }
     .grid {
       display: grid;
-      grid-template-columns: 1fr 1.15fr;
+      grid-template-columns: 1fr 1.1fr;
       gap: 18px;
     }
     .card {
-      background: var(--card);
+      background: var(--panel);
       border: 1px solid rgba(148, 163, 184, 0.25);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -60,7 +69,7 @@
     }
     .card-hd {
       padding: 16px 18px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--border);
       background: #fbfdff;
     }
     .card-hd h2 {
@@ -68,4 +77,266 @@
       font-size: 18px;
     }
     .card-bd { padding: 18px; }
-    .form-g
+    .form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #344054;
+    }
+    input, textarea {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 12px 13px;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+      color: var(--text);
+    }
+    input:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+    textarea {
+      min-height: 84px;
+      resize: vertical;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    button, a.btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .primary { background: var(--primary); color: #fff; }
+    .secondary { background: #e2e8f0; color: #0f172a; }
+    .good { background: #0f766e; color: #fff; }
+    .note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      background: #f8fafc;
+      color: #475569;
+      font-size: 13px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+    }
+    .email {
+      border: 1px solid #dbe2ea;
+      border-radius: 16px;
+      padding: 18px;
+      background: #fff;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .red { color: #ef4444; font-weight: 700; }
+    .small { margin-top: 10px; font-size: 12px; color: var(--muted); }
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>NZTA Email Generator</h1>
+        <div class="sub">Fixed template. Only the red fields change.</div>
+      </div>
+      <div class="pill">To: service@nzta.govt.nz</div>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <div class="card-hd"><h2>Fields</h2></div>
+        <div class="card-bd">
+          <div class="form">
+            <div class="field full">
+              <label for="siteName">Site name</label>
+              <input id="siteName" value="S:3JB: SH6 - Queenstown" />
+            </div>
+            <div class="field">
+              <label for="deviceName">Device name</label>
+              <input id="deviceName" value="NZTA-31570-JB-SE01" />
+            </div>
+            <div class="field">
+              <label for="errorCode">Error code</label>
+              <input id="errorCode" value="SYSTEMPINGFAIL" />
+            </div>
+            <div class="field full">
+              <label for="vendorName">Vendor name</label>
+              <input id="vendorName" value="Downer Queenstown" />
+            </div>
+            <div class="field full">
+              <label for="locationCode">Location code</label>
+              <input id="locationCode" value="3JB-31501-31599, SH6 - Queenstown" />
+            </div>
+            <div class="field full">
+              <label for="ticketRef">Ticket reference</label>
+              <input id="ticketRef" placeholder="Optional" />
+            </div>
+            <div class="field full">
+              <label for="extra">Extra note</label>
+              <textarea id="extra" placeholder="Optional extra sentence at the end"></textarea>
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button class="primary" id="copyBtn" type="button">Copy email</button>
+            <a class="btn good" id="mailBtn" href="#" target="_blank" rel="noreferrer">Open email app</a>
+            <button class="secondary" id="resetBtn" type="button">Reset</button>
+          </div>
+
+          <div class="note" id="meta"></div>
+          <div class="small">Paste this file into <code>index.html</code>, commit it, then GitHub Pages will update the same URL.</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-hd"><h2>Preview</h2></div>
+        <div class="card-bd">
+          <div class="email" id="preview"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const defaults = {
+      siteName: 'S:3JB: SH6 - Queenstown',
+      deviceName: 'NZTA-31570-JB-SE01',
+      errorCode: 'SYSTEMPINGFAIL',
+      vendorName: 'Downer Queenstown',
+      locationCode: '3JB-31501-31599, SH6 - Queenstown',
+      ticketRef: '',
+      extra: ''
+    };
+
+    const els = {
+      siteName: document.getElementById('siteName'),
+      deviceName: document.getElementById('deviceName'),
+      errorCode: document.getElementById('errorCode'),
+      vendorName: document.getElementById('vendorName'),
+      locationCode: document.getElementById('locationCode'),
+      ticketRef: document.getElementById('ticketRef'),
+      extra: document.getElementById('extra'),
+      preview: document.getElementById('preview'),
+      meta: document.getElementById('meta'),
+      copyBtn: document.getElementById('copyBtn'),
+      mailBtn: document.getElementById('mailBtn'),
+      resetBtn: document.getElementById('resetBtn')
+    };
+
+    function val(key) {
+      return els[key].value.trim();
+    }
+
+    function buildBody() {
+      const siteName = val('siteName');
+      const deviceName = val('deviceName');
+      const errorCode = val('errorCode');
+      const vendorName = val('vendorName');
+      const locationCode = val('locationCode');
+      const ticketRef = val('ticketRef');
+      const extra = val('extra');
+
+      const extraLine = extra ? `\n${extra}` : '';
+      const ticketLine = ticketRef ? `\n\nTicket reference: ${ticketRef}` : '';
+
+      return `Kia Ora Team,\n\nOne NZ has received an event ticket indicating an outage at site ${siteName}, Device name:${deviceName}, with the error code ${errorCode}.\n\nLocation Code: ${locationCode}\n\nOur internal health checks confirm that the device is not affected by any known power or network issues, nor is it impacted by any approved changes currently in progress.\n\nTo proceed with remediation, an onsite investigation is required. Could you please raise a ticket with the roadside vendor ${vendorName} to check for any power or maintenance issues that may be contributing to the outage?\n\nIf possible, please also confirm whether any recent site works or environmental factors (e.g., weather-related disruptions or scheduled maintenance) might be relevant to this incident.\n\nWe’d appreciate it if you could share the ticket reference once it’s been created, so we can track progress and coordinate any follow-up actions as needed.${ticketLine}${extraLine}\n\nRegards`;
+    }
+
+    function buildSubject() {
+      return `S:3JB: SH6 - Queenstown, D:${val('deviceName')}, E:${val('errorCode')}`;
+    }
+
+    function escapeHtml(s) {
+      return s
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function render() {
+      const siteName = escapeHtml(val('siteName'));
+      const deviceName = escapeHtml(val('deviceName'));
+      const errorCode = escapeHtml(val('errorCode'));
+      const vendorName = escapeHtml(val('vendorName'));
+      const locationCode = escapeHtml(val('locationCode'));
+      const ticketRef = escapeHtml(val('ticketRef'));
+      const extra = escapeHtml(val('extra'));
+
+      const preview = `Kia Ora Team,
+
+One NZ has received an event ticket indicating an outage at site <span class="red">${siteName}</span>, Device name:<span class="red">${deviceName}</span>, with the error code <span class="red">${errorCode}</span>.
+
+Location Code: ${locationCode}
+
+Our internal health checks confirm that the device is not affected by any known power or network issues, nor is it impacted by any approved changes currently in progress.
+
+To proceed with remediation, an onsite investigation is required. Could you please raise a ticket with the roadside vendor <span class="red">${vendorName}</span> to check for any power or maintenance issues that may be contributing to the outage?
+
+If possible, please also confirm whether any recent site works or environmental factors (e.g., weather-related disruptions or scheduled maintenance) might be relevant to this incident.
+
+We’d appreciate it if you could share the ticket reference once it’s been created, so we can track progress and coordinate any follow-up actions as needed.${ticketRef ? `\n\nTicket reference: <span class="red">${ticketRef}</span>` : ''}${extra ? `\n\n${extra}` : ''}
+
+Regards`;
+
+      els.preview.innerHTML = preview;
+      els.meta.textContent = `To: service@nzta.govt.nz\nSubject: ${buildSubject()}`;
+      els.mailBtn.href = `mailto:service@nzta.govt.nz?subject=${encodeURIComponent(buildSubject())}&body=${encodeURIComponent(buildBody())}`;
+    }
+
+    async function copyEmail() {
+      const text = `To: service@nzta.govt.nz\nSubject: ${buildSubject()}\n\n${buildBody()}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        els.copyBtn.textContent = 'Copied!';
+        setTimeout(() => (els.copyBtn.textContent = 'Copy email'), 1200);
+      } catch {
+        alert('Copy failed. You can select the preview text manually.');
+      }
+    }
+
+    function resetForm() {
+      Object.keys(defaults).forEach((key) => {
+        els[key].value = defaults[key];
+      });
+      render();
+    }
+
+    ['input', 'change'].forEach((evt) => {
+      Object.keys(defaults).forEach((key) => els[key].addEventListener(evt, render));
+    });
+
+    els.copyBtn.addEventListener('click', copyEmail);
+    els.resetBtn.addEventListener('click', resetForm);
+
+    render();
+  </script>
+</body>
+</html>
