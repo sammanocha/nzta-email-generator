@@ -1,0 +1,1 @@
+# nzta-email-generator
